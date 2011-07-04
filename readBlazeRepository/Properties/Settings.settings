@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="readBlazeRepository.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="repoPathString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">S:/benefitCal_WL/dbsystem/com/fidelity/definedbenefit/benefitcalculator/repository/client</Value>
+    </Setting>
+    <Setting Name="editorFontSize" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">11</Value>
+    </Setting>
+    <Setting Name="compilerPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">S:\BenefitCal_WL\dbes\Channel\BenefitCal_WL\scripts\Blazec.bat</Value>
+    </Setting>
+    <Setting Name="ruleInitPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">S:\BenefitCal_WL\dbes\Channel\BenefitCal_WL\scripts\RuleInit.cmd</Value>
+    </Setting>
+    <Setting Name="dbesChannelScriptDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">S:\BenefitCal_WL\dbes\Channel\BenefitCal_WL\scripts\</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
