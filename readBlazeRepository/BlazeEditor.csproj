@@ -12,8 +12,9 @@
     <AssemblyName>BlazeDevelopmentEditor</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationIcon>panneau  de configuration Bagg%27s v2.ico</ApplicationIcon>
-    <PublishUrl>publish\</PublishUrl>
+    <ApplicationIcon>resources\panneau  de configuration Bagg%27s v2.ico</ApplicationIcon>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\jason\code\BlazeProjects\burntdev\publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -41,7 +41,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\bin\release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -69,32 +69,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlazeEditorSettingsWindow.cs">
+    <Compile Include="src\BlazeEditorSettingsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BlazeEditorSettingsWindow.Designer.cs">
+    <Compile Include="src\BlazeEditorSettingsWindow.Designer.cs">
       <DependentUpon>BlazeEditorSettingsWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="BlazeRepository.cs">
+    <Compile Include="src\BlazeRepository.cs">
     </Compile>
-    <Compile Include="BlazeRepoTabControl.cs">
+    <Compile Include="src\BlazeRepoTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BlazeEditor.cs">
+    <Compile Include="src\BlazeEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BlazeEditor.Designer.cs">
+    <Compile Include="src\BlazeEditor.Designer.cs">
       <DependentUpon>BlazeEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BlazeEditorSettingsWindow.resx">
+    <EmbeddedResource Include="src\BlazeEditorSettingsWindow.resx">
       <DependentUpon>BlazeEditorSettingsWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BlazeRepoTabControl.resx">
+    <EmbeddedResource Include="src\BlazeRepoTabControl.resx">
       <DependentUpon>BlazeRepoTabControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BlazeEditor.resx">
+    <EmbeddedResource Include="src\BlazeEditor.resx">
       <DependentUpon>BlazeEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -113,31 +113,20 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="blazeEditorSettings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>blazeEditorSettings.Designer.cs</LastGenOutput>
-    </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="blazeEditorSettings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>blazeEditorSettings.settings</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="panneau  de configuration Bagg%27s v2.ico" />
-    <Content Include="ScintillaNET.xml">
+    <Content Include="resources\netscientilla\SciLexer.dll" />
+    <Content Include="resources\netscientilla\ScintillaNet.dll" />
+    <Content Include="resources\panneau  de configuration Bagg%27s v2.ico" />
+    <Content Include="resources\ScintillaNET.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="netscientilla\" />
-    <Folder Include="resources\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
