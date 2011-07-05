@@ -6,8 +6,6 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.XPath;
-using System.Xml.Linq;
 
 namespace jwh.blaze.application
 {
@@ -301,7 +299,6 @@ namespace jwh.blaze.application
         public string idename;
         public string blazeFamily;
         public string comment;
-        public XElement fileXml;
 
         public BlazeFile()
         {
@@ -346,7 +343,6 @@ namespace jwh.blaze.application
     public class BlazeFunction : BlazeFile
     {
         public List<BlazeVariable> functionParameters = new List<BlazeVariable>();
-        public XElement functionElement;
         private XmlDocument xdoc = new XmlDocument();
         public string functionBody;
 
