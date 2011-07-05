@@ -12,7 +12,7 @@
     <AssemblyName>BlazeDevelopmentEditor</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationIcon>resources\panneau  de configuration Bagg%27s v2.ico</ApplicationIcon>
+    <ApplicationIcon>resources\1309877082_nerolinux.ico</ApplicationIcon>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>C:\jason\code\BlazeProjects\burntdev\publish\</PublishUrl>
     <Install>true</Install>
@@ -41,7 +41,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\release\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -122,11 +122,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\1309877082_nerolinux.ico" />
+    <Content Include="resources\nero-burning.png" />
     <Content Include="resources\netscientilla\SciLexer.dll" />
     <Content Include="resources\netscientilla\ScintillaNet.dll" />
     <Content Include="resources\panneau  de configuration Bagg%27s v2.ico" />
     <Content Include="resources\ScintillaNET.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

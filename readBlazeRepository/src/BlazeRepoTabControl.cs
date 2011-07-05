@@ -39,7 +39,7 @@ namespace jwh.blaze.application
 
         #region Properties
 
-        [Editor(typeof(BlazeRepoTabPageCollectionEditor), typeof(UITypeEditor))]
+        [Editor( typeof( BlazeRepoTabPageCollectionEditor ), typeof( UITypeEditor ) )]
         public new TabPageCollection TabPages
         {
             get
@@ -55,14 +55,14 @@ namespace jwh.blaze.application
 
         internal class BlazeRepoTabPageCollectionEditor : CollectionEditor
         {
-            public BlazeRepoTabPageCollectionEditor(System.Type type)
-                : base(type)
+            public BlazeRepoTabPageCollectionEditor( System.Type type )
+                : base( type )
             {
             }
 
             protected override Type CreateCollectionItemType()
             {
-                return typeof(BlazeRepoTabPage);
+                return typeof( BlazeRepoTabPage );
             }
         }
 
@@ -74,12 +74,12 @@ namespace jwh.blaze.application
             // 
             // BlazeRepoTabControl
             // 
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BlazeRepoTabControl_KeyDown);
-            this.ResumeLayout(false);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler( this.BlazeRepoTabControl_KeyDown );
+            this.ResumeLayout( false );
 
         }
 
-        private void BlazeRepoTabControl_KeyDown(object sender, KeyEventArgs e)
+        private void BlazeRepoTabControl_KeyDown( object sender, KeyEventArgs e )
         {
 
         }
@@ -101,7 +101,7 @@ namespace jwh.blaze.application
     /// in most situations anyway. Only real benefit at this point
     /// is keeping handle to Blaze file for saving
     /// </remarks>
-    [Designer(typeof(System.Windows.Forms.Design.ScrollableControlDesigner))]
+    [Designer( typeof( System.Windows.Forms.Design.ScrollableControlDesigner ) )]
     public class BlazeRepoTabPage : TabPage
     {
         public BlazeFile tabBlazeFile;
@@ -146,7 +146,7 @@ namespace jwh.blaze.application
         /// <returns>BlazeRepoTabPage</returns>
         public Type getType()
         {
-            return typeof(BlazeRepoTabPage);
+            return typeof( BlazeRepoTabPage );
         }
 
         /// <summary>
@@ -161,12 +161,12 @@ namespace jwh.blaze.application
         /// </remarks>
         public void saveTab()
         {
-            if (this.GetType() == typeof(BlazeFunctionTabPage))
+            if (this.GetType() == typeof( BlazeFunctionTabPage ))
             {
                 BlazeFunctionTabPage tab = (BlazeFunctionTabPage)this;
                 tab.saveBody();
             }
-            else if (this.GetType() == typeof(BlazeRuleTabPage))
+            else if (this.GetType() == typeof( BlazeRuleTabPage ))
             {
                 BlazeRuleTabPage tab = (BlazeRuleTabPage)this;
                 tab.saveBody();
@@ -184,7 +184,7 @@ namespace jwh.blaze.application
         public BlazeFunction tabFunctionFile;
         public string functionBody;
 
-        public BlazeFunctionTabPage(BlazeFunction inBlazeFile, BlazeRepoTabControl parentControl)
+        public BlazeFunctionTabPage( BlazeFunction inBlazeFile, BlazeRepoTabControl parentControl )
         {
             base.tabBlazeFile = inBlazeFile;
             base.Text = inBlazeFile.idename;
@@ -196,8 +196,8 @@ namespace jwh.blaze.application
             MenuItem[] paramMenuItems = createParamMenu();
             ContextMenu paramListMenu = new ContextMenu();
 
-            paramListMenu.MenuItems.Add("Add Parameter");
-            paramListMenu.MenuItems.Add("Remove Parameter");
+            paramListMenu.MenuItems.Add( "Add Parameter" );
+            paramListMenu.MenuItems.Add( "Remove Parameter" );
 
             codeSplitter = new SplitContainer();
             codeSplitter.Orientation = Orientation.Horizontal;
@@ -212,7 +212,7 @@ namespace jwh.blaze.application
             codeBox.MatchBraces = true;
 
             codeBox.Folding.MarkerScheme = ScintillaNet.FoldMarkerScheme.BoxPlusMinus;
-            codeBox.Font = new System.Drawing.Font("DejaVu Sans Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            codeBox.Font = new System.Drawing.Font( "DejaVu Sans Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)) );
             codeBox.Styles.BraceBad.FontName = "DejaVu Sans Mono";
             codeBox.Styles.BraceLight.FontName = "DejaVu Sans Mono";
             codeBox.Styles.ControlChar.FontName = "DejaVu Sans Mono";
@@ -224,7 +224,7 @@ namespace jwh.blaze.application
             codeBox.Folding.IsEnabled = true;
             codeBox.ConfigurationManager.CustomLocation = "ScintillaNET.xml";
             codeBox.ConfigurationManager.Language = "cs";
-            codeBox.AutoComplete.List.AddRange(hostControl.globalVarList);
+            codeBox.AutoComplete.List.AddRange( hostControl.globalVarList );
             foreach (string var in hostControl.globalVarList)
             {
                 codeBox.Lexing.Keywords[1] += " " + var;
@@ -234,30 +234,30 @@ namespace jwh.blaze.application
             parameterView.View = View.Details;
             parameterView.FullRowSelect = true;
             parameterView.ContextMenu = paramListMenu;
-            parameterView.Columns.Add("Name", 150);
-            parameterView.Columns.Add("Type", 130);
+            parameterView.Columns.Add( "Name", 150 );
+            parameterView.Columns.Add( "Type", 130 );
             foreach (BlazeVariable param in inBlazeFile.functionParameters)
             {
-                ListViewItem paramItem = new ListViewItem(param.name);
-                paramItem.SubItems.Add(param.type);
-                parameterView.Items.Add(paramItem);
-                codeBox.AutoComplete.List.Add(param.name);
+                ListViewItem paramItem = new ListViewItem( param.name );
+                paramItem.SubItems.Add( param.type );
+                parameterView.Items.Add( paramItem );
+                codeBox.AutoComplete.List.Add( param.name );
                 codeBox.Lexing.Keywords[1] += " " + param.name;
             }
             codeBox.AutoComplete.List.Sort();
 
-            codeSplitter.Panel1.Controls.Add(parameterView);
-            codeSplitter.Panel2.Controls.Add(codeBox);
+            codeSplitter.Panel1.Controls.Add( parameterView );
+            codeSplitter.Panel2.Controls.Add( codeBox );
             parameterView.Dock = DockStyle.Fill;
             codeBox.Dock = DockStyle.Fill;
             codeBox.Text = inBlazeFile.functionBody;
 
             // Event handlers
-            codeBox.CharAdded += new EventHandler<ScintillaNet.CharAddedEventArgs>(codeBox_CharAdded);
-            codeBox.TextChanged += new EventHandler<EventArgs>(codeBox_TextChanged);
+            codeBox.CharAdded += new EventHandler<ScintillaNet.CharAddedEventArgs>( codeBox_CharAdded );
+            codeBox.TextChanged += new EventHandler<EventArgs>( codeBox_TextChanged );
         }
 
-        void codeBox_TextChanged(object sender, EventArgs e)
+        void codeBox_TextChanged( object sender, EventArgs e )
         {
             if (base.hasChanged == false)
             {
@@ -265,18 +265,18 @@ namespace jwh.blaze.application
             }
         }
 
-        void codeBox_CharAdded(object sender, ScintillaNet.CharAddedEventArgs e)
+        void codeBox_CharAdded( object sender, ScintillaNet.CharAddedEventArgs e )
         {
             // UNDONE this will cause autocomplete to show up when pressing "."
 
             if (e.Ch == '.')
             {
-                string varBeforePeriod = this.codeBox.GetWordFromPosition(this.codeBox.CurrentPos - 1);
+                string varBeforePeriod = this.codeBox.GetWordFromPosition( this.codeBox.CurrentPos - 1 );
                 if (varBeforePeriod != null && varBeforePeriod != "")
                 {
-                    if (hostControl.globalVarTypeDictionary.ContainsKey(varBeforePeriod))
+                    if (hostControl.globalVarTypeDictionary.ContainsKey( varBeforePeriod ))
                     {
-                        codeBox.CallTip.Show("var is of type: " + hostControl.globalVarTypeDictionary[varBeforePeriod]);
+                        codeBox.CallTip.Show( "var is of type: " + hostControl.globalVarTypeDictionary[varBeforePeriod] );
                     }
                     // list<string> s = new list<string>();
                 }
@@ -287,7 +287,7 @@ namespace jwh.blaze.application
 
         public void saveBody()
         {
-            System.Diagnostics.Debug.WriteLine("BlazeRepoTabControl: saving function " + tabFunctionFile.blazeFileInfo.FullName);
+            System.Diagnostics.Debug.WriteLine( "BlazeRepoTabControl: saving function " + tabFunctionFile.blazeFileInfo.FullName );
             tabFunctionFile.functionBody = codeBox.Text;
             tabFunctionFile.saveBody();
             this.hasChanged = false;
@@ -306,8 +306,8 @@ namespace jwh.blaze.application
         public MenuItem[] createParamMenu()
         {
             MenuItem[] theList = new MenuItem[10];
-            theList[0] = new MenuItem("Add Parameter");
-            theList[1] = new MenuItem("Remove Parameter");
+            theList[0] = new MenuItem( "Add Parameter" );
+            theList[1] = new MenuItem( "Remove Parameter" );
 
             return theList;
         }
@@ -325,7 +325,7 @@ namespace jwh.blaze.application
         public ListView parameterView { get; set; }
         public ListView ruleListView { get; set; }
 
-        public BlazeRulesetTabPage(BlazeFile inBlazeFile)
+        public BlazeRulesetTabPage( BlazeFile inBlazeFile )
         {
             base.Text = inBlazeFile.idename;
 
@@ -341,28 +341,28 @@ namespace jwh.blaze.application
             ruleListView = new ListView();
             ruleListView.View = View.Details;
             ruleListView.FullRowSelect = true;
-            ruleListView.Columns.Add("Rule", 300);
+            ruleListView.Columns.Add( "Rule", 300 );
             // TODO show comments
             foreach (BlazeRule rule in tabRulesetFile.ruleList)
             {
-                ListViewItem ruleItem = new ListViewItem(rule.idename);
-                ruleListView.Items.Add(ruleItem);
+                ListViewItem ruleItem = new ListViewItem( rule.idename );
+                ruleListView.Items.Add( ruleItem );
             }
 
             parameterView = new ListView();
             parameterView.View = View.Details;
             parameterView.FullRowSelect = true;
-            parameterView.Columns.Add("Name", 150);
-            parameterView.Columns.Add("Type", 130);
+            parameterView.Columns.Add( "Name", 150 );
+            parameterView.Columns.Add( "Type", 130 );
             foreach (BlazeVariable param in tabRulesetFile.rulesetParameters)
             {
-                ListViewItem paramItem = new ListViewItem(param.name);
-                paramItem.SubItems.Add(param.type);
-                parameterView.Items.Add(paramItem);
+                ListViewItem paramItem = new ListViewItem( param.name );
+                paramItem.SubItems.Add( param.type );
+                parameterView.Items.Add( paramItem );
             }
 
-            codeSplitter.Panel1.Controls.Add(parameterView);
-            codeSplitter.Panel2.Controls.Add(ruleListView);
+            codeSplitter.Panel1.Controls.Add( parameterView );
+            codeSplitter.Panel2.Controls.Add( ruleListView );
             parameterView.Dock = DockStyle.Fill;
             ruleListView.Dock = DockStyle.Fill;
         }
@@ -377,7 +377,7 @@ namespace jwh.blaze.application
         public BlazeRuleset parentRuleset;
         public string ruleBody;
 
-        public BlazeRuleTabPage(BlazeRule inBlazeFile, BlazeRepoTabControl parentControl)
+        public BlazeRuleTabPage( BlazeRule inBlazeFile, BlazeRepoTabControl parentControl )
         {
             base.Text = inBlazeFile.idename;
             base.idename = inBlazeFile.idename;
@@ -400,9 +400,9 @@ namespace jwh.blaze.application
             codeBox.MatchBraces = true;
             codeBox.ConfigurationManager.CustomLocation = "ScintillaNET.xml";
             codeBox.ConfigurationManager.Language = "cs";
-            codeBox.CharAdded += new EventHandler<ScintillaNet.CharAddedEventArgs>(codeBox_CharAdded);
-            codeBox.TextChanged += new EventHandler<EventArgs>(codeBox_TextChanged);
-            codeBox.AutoComplete.List.AddRange(hostControl.globalVarList);
+            codeBox.CharAdded += new EventHandler<ScintillaNet.CharAddedEventArgs>( codeBox_CharAdded );
+            codeBox.TextChanged += new EventHandler<EventArgs>( codeBox_TextChanged );
+            codeBox.AutoComplete.List.AddRange( hostControl.globalVarList );
             foreach (string var in hostControl.globalVarList)
             {
                 codeBox.Lexing.Keywords[1] += " " + var;
@@ -411,24 +411,24 @@ namespace jwh.blaze.application
             parameterView = new ListView();
             parameterView.View = View.Details;
             parameterView.FullRowSelect = true;
-            parameterView.Columns.Add("Name", 150);
-            parameterView.Columns.Add("Type", 130);
+            parameterView.Columns.Add( "Name", 150 );
+            parameterView.Columns.Add( "Type", 130 );
             foreach (BlazeVariable param in inBlazeFile.ruleParameters)
             {
-                ListViewItem paramItem = new ListViewItem(param.name);
-                paramItem.SubItems.Add(param.type);
-                parameterView.Items.Add(paramItem);
+                ListViewItem paramItem = new ListViewItem( param.name );
+                paramItem.SubItems.Add( param.type );
+                parameterView.Items.Add( paramItem );
                 codeBox.Lexing.Keywords[1] += " " + param.name;
             }
 
-            codeSplitter.Panel1.Controls.Add(parameterView);
-            codeSplitter.Panel2.Controls.Add(codeBox);
+            codeSplitter.Panel1.Controls.Add( parameterView );
+            codeSplitter.Panel2.Controls.Add( codeBox );
             parameterView.Dock = DockStyle.Fill;
             codeBox.Dock = DockStyle.Fill;
             codeBox.Text = inBlazeFile.ruleBody;
         }
 
-        void codeBox_TextChanged(object sender, EventArgs e)
+        void codeBox_TextChanged( object sender, EventArgs e )
         {
             if (base.hasChanged == false)
             {
@@ -437,18 +437,18 @@ namespace jwh.blaze.application
             // throw new NotImplementedException();
         }
 
-        void codeBox_CharAdded(object sender, ScintillaNet.CharAddedEventArgs e)
+        void codeBox_CharAdded( object sender, ScintillaNet.CharAddedEventArgs e )
         {
             // UNDONE this will cause autocomplete to show up when pressing "."
 
             if (e.Ch == '.')
             {
-                string varBeforePeriod = this.codeBox.GetWordFromPosition(this.codeBox.CurrentPos - 1);
+                string varBeforePeriod = this.codeBox.GetWordFromPosition( this.codeBox.CurrentPos - 1 );
                 if (varBeforePeriod != null && varBeforePeriod != "")
                 {
-                    if (hostControl.globalVarTypeDictionary.ContainsKey(varBeforePeriod))
+                    if (hostControl.globalVarTypeDictionary.ContainsKey( varBeforePeriod ))
                     {
-                        codeBox.CallTip.Show("var is of type: " + hostControl.globalVarTypeDictionary[varBeforePeriod]);
+                        codeBox.CallTip.Show( "var is of type: " + hostControl.globalVarTypeDictionary[varBeforePeriod] );
                     }
                     // list<string> s = new list<string>();
                 }
@@ -457,16 +457,16 @@ namespace jwh.blaze.application
 
         public void saveBody()
         {
-            System.Diagnostics.Debug.WriteLine("BlazeRepoTabControl: Saving rule body " + tabRuleFile.idename);
+            System.Diagnostics.Debug.WriteLine( "BlazeRepoTabControl: Saving rule body " + tabRuleFile.idename );
             tabRuleFile.ruleBody = codeBox.Text;
-            parentRuleset.saveRuleBody(tabRuleFile);
+            parentRuleset.saveRuleBody( tabRuleFile );
             base.hasChanged = false;
         }
     }
 
     public class BlazeProjectListTabPage : BlazeRepoTabPage
     {
-        public BlazeProjectListTabPage(BlazeFile inBlazeFile)
+        public BlazeProjectListTabPage( BlazeFile inBlazeFile )
         {
 
         }
