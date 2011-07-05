@@ -1,0 +1,14 @@
+#summary Features implemented and wanted
+
+= Current features =
+
+  * syntax highlighting for keywords, parameters, global variables
+  * autocomplete for keywords, parameters, global variables
+
+
+= Desired features =
+
+  * Local Variable autocomplete and syntax highlighting
+  * Autocomplete for variables methods and members
+  * Add and remove global variables
+  * Add and remove parameters
