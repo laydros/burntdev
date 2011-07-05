@@ -571,8 +571,6 @@ namespace jwh.blaze.application
                 }
                 variableList.Add(newVar);
                 varStringList.Add(newVar.name);
-                // variableList.Sort();
-                //MessageBox.Show(newVar.name + " " + newVar.type);
             }
         }
     }
