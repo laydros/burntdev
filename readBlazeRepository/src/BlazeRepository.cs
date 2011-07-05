@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
@@ -186,10 +185,11 @@ namespace jwh.blaze.application
         public const string _FUNCTION_FAMILY_STR = "Function Template";
         public const string _RULESET_FAMILY_STR = "Ruleset Template";
         public const string _PROJECT_ITEMS_FAMILY_STR = "Project Items Template";
+        public string templatens = "http://www.blazesoft.com/template";
         public List<String> globalStringList = new List<string>();
-        public XNamespace templatexmlns = "http://www.blazesoft.com/template";
         private string m_rulebaseName;
         private DirectoryInfo m_rulebaseDirectory;
+        private XmlDocument xmlBlaze = new XmlDocument();
         public BlazeProjectItems rbProjectItems;
         public BlazeClient parentClient;
         public List<BlazeFunction> rbFunctionList = new List<BlazeFunction>();
@@ -215,11 +215,13 @@ namespace jwh.blaze.application
             FileInfo[] fileList = m_rulebaseDirectory.GetFiles();
             foreach (FileInfo file in fileList)
             {
+                // avoid innovator_attbs, copyarea.db, and .bak files
                 if (!file.Name.Contains(".innovator_attbs") && !file.Name.Contains(".db") && !file.Name.Contains(".bak"))
                 {
                     try
                     {
-                        XDocument bfile = XDocument.Load(file.FullName);
+                        XmlDocument bfile = new XmlDocument();
+                        bfile.Load( file.FullName );
                         switch (getBlazeFamily(bfile))
                         {
                             case _FUNCTION_FAMILY_STR:
@@ -263,24 +265,14 @@ namespace jwh.blaze.application
             }
         }
 
-        public string getBlazeFamily(XDocument inXml)
+        public string getBlazeFamily(XmlDocument bfile)
         {
             string familyName = "";
 
-            foreach (XElement decendent in inXml.Descendants(templatexmlns + "family"))
-            {
-                if (decendent.Name.LocalName == "family")
-                {
-                    familyName = decendent.Value;
-                    break;
-                }
-            }
+            XmlNodeList family_name_node = bfile.GetElementsByTagName( "family", templatens );
+            familyName = family_name_node[0].InnerText;
+
             return familyName;
-        }
-
-        public void loadVariableList()
-        {
-
         }
     }
 
