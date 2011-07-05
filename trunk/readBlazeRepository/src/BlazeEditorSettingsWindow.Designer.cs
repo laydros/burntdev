@@ -1,4 +1,4 @@
-﻿namespace readBlazeRepository
+﻿namespace jwh.blaze.application
 {
     partial class BlazeEditorSettingsWindow
     {

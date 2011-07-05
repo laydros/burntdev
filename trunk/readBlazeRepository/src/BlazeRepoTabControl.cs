@@ -1,5 +1,4 @@
-﻿using jwh.utilities.blaze;
-using ScintillaNet.Configuration;
+﻿using ScintillaNet.Configuration;
 using ScintillaNet.Design;
 using System;
 using System.Collections;
@@ -15,7 +14,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace jwh.utilities.blaze
+namespace jwh.blaze.application
 {
     #region BlazeRepoTabControl Class
 
