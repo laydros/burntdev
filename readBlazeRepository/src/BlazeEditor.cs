@@ -1,9 +1,9 @@
-﻿using jwh.utilities.blaze;
-using ScintillaNet.Configuration;
+﻿using ScintillaNet.Configuration;
 using ScintillaNet.Design;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -15,7 +15,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.XPath;
 
-namespace readBlazeRepository
+namespace jwh.blaze.application
 {
     /// <summary>
     /// Primary IDE Window Class

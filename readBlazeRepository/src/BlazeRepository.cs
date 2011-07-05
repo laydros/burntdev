@@ -10,7 +10,7 @@ using System.Xml;
 using System.Xml.XPath;
 using System.Xml.Linq;
 
-namespace jwh.utilities.blaze
+namespace jwh.blaze.application
 {
 	
     public class BlazeRepository

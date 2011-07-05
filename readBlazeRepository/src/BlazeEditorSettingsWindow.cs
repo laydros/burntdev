@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace readBlazeRepository
+namespace jwh.blaze.application
 {
     public partial class BlazeEditorSettingsWindow : Form
     {

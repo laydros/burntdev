@@ -1,4 +1,4 @@
-﻿namespace readBlazeRepository
+﻿namespace jwh.blaze.application
 {
     partial class BlazeEditor
     {
@@ -74,7 +74,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.dirSelectProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.codeDisplayTabs = new jwh.utilities.blaze.BlazeRepoTabControl();
+            this.codeDisplayTabs = new jwh.blaze.application.BlazeRepoTabControl();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tabRemoveButton = new System.Windows.Forms.ToolStripButton();
             this.displayTabControl = new System.Windows.Forms.TabControl();
@@ -967,7 +967,7 @@
         private System.Windows.Forms.ToolStripProgressBar dirSelectProgressBar;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton refreshDir;
-        private jwh.utilities.blaze.BlazeRepoTabControl codeDisplayTabs;
+        private jwh.blaze.application.BlazeRepoTabControl codeDisplayTabs;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
